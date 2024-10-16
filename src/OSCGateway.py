@@ -4,14 +4,52 @@ import time
 import numpy as np
 
 class OSCGateway:
-    def __init__(self, r_ip='', r_port=5005, 
-                 s_ip='', s_ports=[6006, 7007, 8008],
+    def __init__(self, r_ip='127.0.0.1',
+                 r_port=5005, 
+                 s_ip='127.0.0.1',
+                 s_ports=[6006, 7007, 8008],
                  xy_remap=False, yz_remap=False, zx_remap=False,
                  x_flip=False, y_flip=False, z_flip=False,
                  mic_xyz=(0., 0., 0.),
                  mic_rot_deg=(0., 0.),
                  verbose=False,
                  ):
+        '''
+        OSC gateway class
+
+        Parameters
+        ----------
+        r_ip: string, default is 127.0.0.1
+                IP of your computer on the network you are connected with the computer hosting Kratos
+        r_port: int, default is 5005
+                network port of your computer on the network you are connected with the computer hosting Kratos
+        s_ip: string, default is 127.0.0.1
+                IP of the computer hosting Reaper. Generally the same computer, in this case, set
+        s_port: list of int, default is [6006, 7007, 8008]
+                list of network ports of the plug-ins in Reaper for beamforming (ProbeDecoder) (1st and 2nd) and spatialisation (MultiEncoder) (3rd)
+        xy_remap: bool, optional, default is False
+                Swap X and Y axes.
+        yz_remap: bool, optional, default is False
+                Swap Y and Z axes.
+        zx_remap: bool, optional, default is False
+                Swap Z and X axes.
+        x_flip: bool, optional, default is False
+                Flip the X axis.
+        y_flip: bool, optional, default is False
+                Flip the Y axis.
+        z_flip: bool, optional, default is False
+                Flip the Z axis.
+        mic_xyz: tuple of 3 float, optional, default is (0., 0., 0.)
+                Microphone translation correction.
+        mic_rot_deg: tuple of 2 float, optional, default is (0., 0.)
+                Microphone orientation correction.
+        verbose: bool, optional, default is False
+                Enable info logs.
+        
+        Returns
+        -------
+
+        '''
         self.verbose = verbose
         # OSC
         self.clients = [udp_client.SimpleUDPClient(s_ip, port) for port in s_ports]
