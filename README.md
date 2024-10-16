@@ -30,4 +30,6 @@ In Kratos Actions panel:
 
 # Reaper
 
+Add your ambisonic encoder plug-in in the `formatB` track FX
+
 <img src="resources/figures/reaper.jpg" alt="Reaper view" width="1200"/>
