@@ -30,6 +30,8 @@ In Kratos Actions panel:
 
 # Reaper
 
-Add your ambisonic encoder plug-in in the `formatB` track FX
+You can find the Reaper template session in the root of the project:  `beamforming_template.rpp`.
+Add your ambisonic encoder plug-in in the `formatB` track FX.
+
 
 <img src="resources/figures/reaper.jpg" alt="Reaper view" width="1200"/>
